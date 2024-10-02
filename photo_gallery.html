@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Photo Gallery</title>
+    <style>
+        /* Basic styling for the gallery */
+        #image {
+            width: 300px;
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+            border: 2px solid black;
+            margin-bottom: 20px;
+            background-color: #f3f3f3;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .gallery img {
+            width: 100px;
+            height: 75px;
+            margin: 10px;
+            cursor: pointer;
+            border: 2px solid #ccc;
+            transition: border 0.3s ease;
+        }
+
+        .gallery img:hover {
+            border: 2px solid #333;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Display area where the text and background image will change -->
+    <div id="image">
+        Hover over an image below to display here.
+    </div>
+
+    <!-- Gallery of images -->
+    <div class="gallery">
+        <img class="preview" src="C:\Users\Admin\Desktop\image1.jpg" alt="Beautiful Landscape 1" onmouseover="upDate(this)" onmouseout="undo()">
+        <img class="preview" src="C:\Users\Admin\Desktop\image2.jpg" alt="Beautiful Landscape 2" onmouseover="upDate(this)" onmouseout="undo()">
+        <img class="preview" src="C:\Users\Admin\Desktop\image3.jpg" alt="Beautiful Landscape 3" onmouseover="upDate(this)" onmouseout="undo()">
+        <img class="preview" src="C:\Users\Admin\Desktop\image4.jpg" alt="Beautiful Landscape 4" onmouseover="upDate(this)" onmouseout="undo()">
+    </div>
+
+    <!-- JavaScript to handle the upDate and undo functions -->
+    <script>
+        function upDate(previewPic) {
+            // Log the source and alt text of the hovered image
+            console.log("Image source: " + previewPic.src);
+            console.log("Alt text: " + previewPic.alt);
+            
+            // Get the div with the ID 'image'
+            let imageDiv = document.getElementById('image');
+
+            // Change the background image to the source of the hovered image
+            imageDiv.style.backgroundImage = "url('" + previewPic.src + "')";
+
+            // Change the text to the alt text of the hovered image
+            imageDiv.innerHTML = previewPic.alt;
+        }
+
+        function undo() {
+            // Get the div with the ID 'image'
+            let imageDiv = document.getElementById('image');
+
+            // Reset the background image to the original state (empty URL)
+            imageDiv.style.backgroundImage = "url('')";
+
+            // Reset the text to the original message
+            imageDiv.innerHTML = "Hover over an image below to display here.";
+        }
+    </script>
+
+</body>
+</html>
